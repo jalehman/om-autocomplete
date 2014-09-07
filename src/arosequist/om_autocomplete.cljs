@@ -62,7 +62,8 @@
                                          (om/update-state! owner
                                                       (fn [s]
                                                         (assoc s
-                                                          :suggestions suggestions
+                                                          :suggestions (if (clojure.string/blank? new-value)
+                                                                         [] suggestions)
                                                           :loading? false)))))
                                 (assoc state
                                   :suggestions-ch new-suggestions-ch
